@@ -1,8 +1,5 @@
 package sudoku;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /*
  * aktuelle Baustelle 
  * Ich brauche eine Konstruktion in der mehrere Arrays mit Spielen hinterlegt werden können
@@ -18,7 +15,7 @@ public class PuzzleArray {
 	private static final String testGame[] = new String[4];
 	private static final String REIHEN_TRENNER = ";";
 	private static final String SPALTEN_TRENNER = ",";
-	static final Integer feld[][] = new Integer[9][9]; // hier solls rein
+	final SudokuEntry feld[][] = new SudokuEntry[9][9]; // hier solls rein
 	
 
 	public PuzzleArray(int index) {
@@ -53,16 +50,9 @@ public class PuzzleArray {
 		for (int k = 0; k < spalten.length; k++) { //Teste die Werte in Helper
 			if (!(spalten[k].matches("[0-9]")))
 				throw new RuntimeException("Ich habe ungültige Werte gefunden!");
-			feld[i][k] = new Integer(spalten[k]).intValue();
+				feld[i][k] = new SudokuEntry();
+				feld[i][k].setFixValue(Integer.parseInt(spalten[k]));
 		}
 	}
 	}
-	public static List<Integer> gibMirDieReihe(PuzzleArray sf, int reihe) {
-		List<Integer> reihenWerte = new ArrayList<>();
-//		for(int n : sf.myArray[reihe]) {
-//			reihenWerte.add(n);
-//		}
-		return reihenWerte;
-	} 
-	
 }

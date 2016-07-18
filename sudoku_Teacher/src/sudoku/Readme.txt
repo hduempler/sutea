@@ -9,4 +9,5 @@ Außerdem soll es möglich sein die Kandidaten auszufüllen. Dabei kann einem di
 Software nachvollziehbar helfen.
 
 Ein Super Vorbild ist die Android App Andoku3. Dort kann man auch viel über Sudoku
-lehrnen.  
+lehrnen. 
+ 

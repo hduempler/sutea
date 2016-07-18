@@ -6,29 +6,35 @@ package sudoku;
  */
 
 public class Spielfeld{
-	private SudokuEntry[][] field = new SudokuEntry[9][9];
-	private MyBitSet[] rowVal = new MyBitSet[9];
-	private MyBitSet[] colVal = new MyBitSet[9];
-	private MyBitSet[] boxVal = new MyBitSet[9];
+	public PuzzleArray pa;
+	public MyBitSet[] rowVal = new MyBitSet[9];
+	public MyBitSet[] colVal = new MyBitSet[9];
+	public MyBitSet[] boxVal = new MyBitSet[9];
 
-	public Spielfeld() {
+	public Spielfeld(int spiel) {
 		super();
+		 pa = new PuzzleArray(spiel);
 		for (int i = 0; i < 9; i++) {
 			boxVal[i] = new MyBitSet(9);
 			colVal[i] = new MyBitSet(9);
 			rowVal[i] = new MyBitSet(9);
+		} 
+		for(int row = 0; row <9 ; row++) {
+			for(int col = 0; col <9 ; col++) {
+				 setEntry(row, col, pa.feld[row][col].getValue());
+			}
 		}
 	}
 	// es gibt freie zu belegende und vom Spiel vorbelegte Felder 
 	public boolean setEntry(Integer row, Integer col, Integer val) {
 		boolean result = false;
-		// if(--.)=false wenn auf vorbelegte Felder geschrieben werden soll
-		if (field[row][col].setValue(val)) {
+		// if(--.) gibt false wenn auf vorbelegte Felder geschrieben werden soll
+		if (pa.feld[row][col].setValue(val)) {
 			rowVal[row].checkedSet(val);
 			colVal[col].checkedSet(val);
 			boxVal[boxValue(row, col)].checkedSet(val);
 			result = true;
-		}
+		} 
 		return result;
 	}
 

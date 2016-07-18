@@ -18,4 +18,15 @@ public class MyBitSet extends BitSet {
 			this.set(number);
 	}
 
+	@Override
+	public String toString() {
+		String result = "";
+		for (int i=1;i<10; i++){
+			result = result + (get(i)==false?"*":i);
+		}
+		return result;
+	}
+	
+	
+
 }
