@@ -9,6 +9,7 @@ public interface SudokuDAO {
 
 	public List<String> list();
 
+	
 	public boolean delete(String gameName);
 }
  
