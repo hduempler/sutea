@@ -32,11 +32,7 @@ public class SudokuTeacherDemo {
 			System.out.println("Die Reihe[" + i + "]: " + bisRow[i]);
 			System.out.println("Die Spalte[" + i + "]: " + bisCol[i]);
 		}
-
-		Spielfeld sf = new Spielfeld(1);
-		for (int j = 0; j < 9; j++) {
-			System.out.println(bisRow[j]);
-		}
+		PuzzleArray.einfacheAusgabe(game);
 
 	}
 

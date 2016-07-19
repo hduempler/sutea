@@ -1,4 +1,4 @@
 Ich sollte mir klar werden ob ich nicht vielleicht alles mit MyBitSet abbilde.
-	Das geht so wie ich es hier gemacht habe nicht, weil die Bitsets nur die Informationen über den Inhalt einer Spalte 
+	Das geht so wie ich es hier gemacht habe nicht, weil die BitSets nur die Informationen über den Inhalt einer Kategorie 
 	(also die in einer Spalte|Reihe|Box gesetzten Ziffern) aber nicht über die Position der darin liegenden Ziffern hat. 
-Es wird schnell übersichtlich -> eindeutige Bezeichner 
+Es wird schnell unübersichtlich -> eindeutige Bezeichner 

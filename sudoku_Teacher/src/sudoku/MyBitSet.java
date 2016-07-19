@@ -22,7 +22,7 @@ public class MyBitSet extends BitSet {
 	public String toString() {
 		String result = "";
 		for (int i=1;i<10; i++){
-			result = result + (get(i)==false?"_":i);
+			result = result + (get(i)==false?"X":i);
 		}
 		return result;
 	}

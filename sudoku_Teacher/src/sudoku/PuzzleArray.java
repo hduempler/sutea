@@ -16,10 +16,9 @@ public class PuzzleArray {
 	private static final String REIHEN_TRENNER = ";";
 	private static final String SPALTEN_TRENNER = ",";
 	final SudokuEntry feld[][] = new SudokuEntry[9][9]; // hier solls rein
-	
 
 	public PuzzleArray(int index) {
-	//	@formatter:off;
+		//	@formatter:off;
 	testGame[0] =  "9,0,4,0,0,0,8,2,5;"	+"6,0,0,5,0,0,0,0,4;"	+"0,0,0,4,8,0,7,0,9;"
 							+	"5,7,0,0,9,0,4,0,0;"	+"0,0,0,0,4,3,6,0,0;"	+"0,6,2,0,1,0,0,0,0;"
 							+	"3,5,8,6,0,0,0,0,1;"	+"0,0,0,9,3,2,0,7,0;"	+"0,0,9,0,0,0,0,4,6;";
@@ -32,27 +31,53 @@ public class PuzzleArray {
 							+  "0,5,3,0,0,0,0,4,0;"+"0,0,0,0,1,0,2,0,0;"+"0,0,0,0,0,0,0,0,0;"
 							+  "0,6,0,3,0,5,0,0,0;"+"1,0,0,0,0,0,7,0,0;"+"0,0,0,4,0,0,0,0,0;";
 	//	@formatter:on;
-/*
- * kann ich den gewünschten Array erzeugen?
- * als Ergebnis  setze ich feld[][] auf das entsprechende Soiel
- */
-	if (!(index>=0 && index<= testGame.length)) {
-		throw new RuntimeException("Für den Wert " + index + " kann ich Dir kein Spiel liefern!\nErlaubte Werte Liegen von 0 bis "+(testGame.length-1));
-	}
-	
-	String reihen[];
-	String spalten[];
-	reihen = testGame[index].split(REIHEN_TRENNER);
-	if (reihen.length != 9)	throw new RuntimeException("Sudoku brauch 9 * 9 Felder! Falsche Werte gefunden!");
-	for (int i = 0; i < reihen.length; i++) {
-		spalten = reihen[i].split(SPALTEN_TRENNER);
-		if (spalten.length != 9)	throw new RuntimeException("Sudoku brauch 9 * 9 Felder! Falsche Werte gefunden!");
-		for (int k = 0; k < spalten.length; k++) { //Teste die Werte in Helper
-			if (!(spalten[k].matches("[0-9]")))
-				throw new RuntimeException("Ich habe ungültige Werte gefunden!");
+		/*
+		 * kann ich den gewünschten Array erzeugen?
+		 * als Ergebnis  setze ich feld[][] auf das entsprechende Soiel
+		 */
+		if (!(index >= 0 && index <= testGame.length)) {
+			throw new RuntimeException("Für den Wert " + index
+					+ " kann ich Dir kein Spiel liefern!\nErlaubte Werte Liegen von 0 bis " + (testGame.length - 1));
+		}
+
+		String reihen[];
+		String spalten[];
+		reihen = testGame[index].split(REIHEN_TRENNER);
+		if (reihen.length != 9)
+			throw new RuntimeException("Sudoku brauch 9 * 9 Felder! Falsche Werte gefunden!");
+		for (int i = 0; i < reihen.length; i++) {
+			spalten = reihen[i].split(SPALTEN_TRENNER);
+			if (spalten.length != 9)
+				throw new RuntimeException("Sudoku brauch 9 * 9 Felder! Falsche Werte gefunden!");
+			for (int k = 0; k < spalten.length; k++) { // Teste die Werte in
+														// Helper
+				if (!(spalten[k].matches("[0-9]")))
+					throw new RuntimeException("Ich habe ungültige Werte gefunden!");
 				feld[i][k] = new SudokuEntry();
 				feld[i][k].setFixValue(Integer.parseInt(spalten[k]));
+			}
 		}
 	}
+	public static void einfacheAusgabe(PuzzleArray game) {
+		boolean isPrinted = false;
+		String trennZeile = "  -------------------------";
+		String buchstabe = "abcdefghi";
+		System.out.println("    1 2 3   4 5 6   7 8 9");
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if(i%3 == 0 && (!isPrinted)) {
+					isPrinted = true;
+					System.out.println(trennZeile);
+				}
+				if(j==0)
+					System.out.print(buchstabe.charAt(i) + " |");
+				else if(j%3 == 0)
+					System.out.print(" |");
+				System.out.print(" " +game.feld[i][j].getValue());
+			}
+			System.out.println(" |");
+			isPrinted = false;
+		}
+		System.out.println(trennZeile);
 	}
 }
