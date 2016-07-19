@@ -15,15 +15,21 @@ public class MyBitSet extends BitSet {
 		if (this.get(number)) {
 			isDuplicate = number;
 		} else
-			this.set(number);
+			this.set(number); 
 	}
 
 	@Override
 	public String toString() {
 		String result = "";
 		for (int i=1;i<10; i++){
-			result = result + (get(i)==false?"X":i);
+			result = result + (get(i)==false?"_":i);
 		}
+		if(isDuplicate > 0) {
+			result += isDuplicate;
+		}else {
+			result += " ";
+		}
+		
 		return result;
 	}
 	
