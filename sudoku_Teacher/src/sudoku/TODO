@@ -1,3 +1,4 @@
 Ich sollte mir klar werden ob ich nicht vielleicht alles mit MyBitSet abbilde.
-Mir kommt es nicht richtig vor die Daten doppelt zu haben. 
-Es ist in diesem frühen Stadium schon zu unübersichtlich.
+	Das geht so wie ich es hier gemacht habe nicht, weil die Bitsets nur die Informationen über den Inhalt einer Spalte 
+	(also die in einer Spalte|Reihe|Box gesetzten Ziffern) aber nicht über die Position der darin liegenden Ziffern hat. 
+Es wird schnell übersichtlich -> eindeutige Bezeichner 
