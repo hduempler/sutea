@@ -38,6 +38,21 @@ public class Spielfeld {
 	}
 
 	public void setSudokuBitSets() {
+		/*
+		 * die MyBitSets sind nur für die Auswertung, 
+		 * sie werden hier vor jedem Aufruf erst einmal gelöscht um 
+		 * Falschmeldungen bei Dopplungen zu vermeiden
+		 * ob das alles wirklich notwendig ist?
+		 * Wenn ich mir die Daten auf deren Grundlage die BitSeets erzeugt werden 
+		 * genauer anschaue sind eigentlich keine Doppelungen möglich 
+		 * Diese können aber entstehen wenn ich versuche ein Feld manuell zu setzen
+		 */
+		
+		for (int i = 0; i < 9; i++) {
+			rowVal[i].set(0, 10, false);
+			colVal[i].set(0, 10, false);
+			boxVal[i].set(0, 10, false);
+		}
 		for (int row = 0; row < 9; row++) {
 			for (int col = 0; col < 9; col++) {
 				rowVal[row].checkedSet(pa.feld[row][col].getValue());
@@ -47,8 +62,8 @@ public class Spielfeld {
 		}
 	}
 
-	// es gibt frei zu belegende und vom Spiel vorbelegte Felder
 	public boolean setEntry(Integer row, Integer col, Integer val) {
+		// es gibt frei zu belegende und vom Spiel vorbelegte Felder
 		boolean result = false;
 		// if(--.) gibt false wenn auf vorbelegte Felder geschrieben werden soll
 		if (pa.feld[row][col].setValue(val)) {
@@ -66,5 +81,32 @@ public class Spielfeld {
 		Integer result = 0;
 		result = (row / 3) * 3 + (col / 3);
 		return result;
+	}
+
+	public void einfacheAusgabe() {
+		boolean isPrinted = false;
+		String trennZeile = "  -------------------------";
+		String buchstabe = "abcdefghi";
+		System.out.println("    1 2 3   4 5 6   7 8 9");
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if (i % 3 == 0 && (!isPrinted)) {
+					isPrinted = true;
+					System.out.println(trennZeile);
+				}
+				if (j == 0)
+					System.out.print(buchstabe.charAt(i) + " |");
+				else if (j % 3 == 0)
+					System.out.print(" |");
+				System.out.print(" " + pa.feld[i][j].getValue());
+			}
+			System.out.print(" |");
+			isPrinted = false;
+			System.out.print(" row[" + i + "]: " + rowVal[i]);
+			System.out.print("| col[" + i + "]: " + colVal[i]);
+			System.out.print("| box[" + i + "]: " + boxVal[i]);
+			System.out.println();
+		}
+		System.out.println(trennZeile + "\n");
 	}
 }

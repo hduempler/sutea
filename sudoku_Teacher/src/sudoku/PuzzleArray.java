@@ -58,26 +58,5 @@ public class PuzzleArray {
 			}
 		}
 	}
-	public static void einfacheAusgabe(PuzzleArray game) {
-		boolean isPrinted = false;
-		String trennZeile = "  -------------------------";
-		String buchstabe = "abcdefghi";
-		System.out.println("    1 2 3   4 5 6   7 8 9");
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
-				if(i%3 == 0 && (!isPrinted)) {
-					isPrinted = true;
-					System.out.println(trennZeile);
-				}
-				if(j==0)
-					System.out.print(buchstabe.charAt(i) + " |");
-				else if(j%3 == 0)
-					System.out.print(" |");
-				System.out.print(" " +game.feld[i][j].getValue());
-			}
-			System.out.println(" |");
-			isPrinted = false;
-		}
-		System.out.println(trennZeile);
-	}
+	
 }

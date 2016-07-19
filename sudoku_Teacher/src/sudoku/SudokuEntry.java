@@ -21,8 +21,9 @@ public class SudokuEntry {
 
 	public void setFixValue(Integer value) {
 		// Methode zum setzen der unveränderlichen Einträge
-		assert (this.fix == false) : "Ich sollte nichts setzen was schon gesetzt ist!" ;
-		this.fix = true;
+		assert (this.fix == false) : "Ich sollte nichts setzen was schon gesetzt ist!";
+		if (value > 0)
+			this.fix = true;
 		this.value = value;
 	}
 }
