@@ -1,6 +1,6 @@
 package sudoku;
 
-public class SudokuTeacherDemo {
+public class SudokuTeacherTextDemo {
 
 	public static int boxValue(int row, int col) {
 		int result = (row / 3) * 3 + (col / 3);
