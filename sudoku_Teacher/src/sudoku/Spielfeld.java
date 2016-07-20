@@ -10,6 +10,7 @@ public class Spielfeld {
 	public MyBitSet[] rowVal = new MyBitSet[9];
 	public MyBitSet[] colVal = new MyBitSet[9];
 	public MyBitSet[] boxVal = new MyBitSet[9];
+	private String buchstabe = "abcdefghi";
 
 	public Spielfeld(int spiel) {
 		super();
@@ -21,7 +22,7 @@ public class Spielfeld {
 		}
 		for (int row = 0; row < 9; row++) {
 			for (int col = 0; col < 9; col++) {
-				setEntry(row, col, pa.feld[row][col].getValue());
+				setEntry(row, col, pa.feld[row][col].getValue(), false);
 			}
 		}
 		setSudokuBitSets();
@@ -62,7 +63,7 @@ public class Spielfeld {
 		}
 	}
 
-	public boolean setEntry(Integer row, Integer col, Integer val) {
+	public boolean setEntry(Integer row, Integer col, Integer val, boolean b) {
 		// es gibt frei zu belegende und vom Spiel vorbelegte Felder
 		boolean result = false;
 		// if(--.) gibt false wenn auf vorbelegte Felder geschrieben werden soll
@@ -72,7 +73,13 @@ public class Spielfeld {
 			boxVal[boxValue(row, col)].checkedSet(val);
 			result = true;
 		}
-		setSudokuBitSets();
+		if(b && result) {
+			System.out.println("In Reihe[" + buchstabe.charAt(row) + "],Spalte[" + (col+1) +"] wurde eine " + val + " gesetzt.\n");
+			einfacheAusgabe();
+		}	else if(b) {
+			System.out.println("Fehler beim Versuch in  Reihe[" + buchstabe.charAt(row) + "],Spalte[" + (col+1) +"] eine " + val + " zu setzten.\n");
+		}
+		
 		return result;
 	}
 
@@ -86,7 +93,6 @@ public class Spielfeld {
 	public void einfacheAusgabe() {
 		boolean isPrinted = false;
 		String trennZeile = "  -------------------------";
-		String buchstabe = "abcdefghi";
 		System.out.println("    1 2 3   4 5 6   7 8 9");
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
