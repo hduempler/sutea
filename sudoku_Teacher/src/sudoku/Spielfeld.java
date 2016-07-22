@@ -1,11 +1,17 @@
 package sudoku;
 
+import java.io.IOException;
+import java.io.Serializable;
+
 /*
  * Serialisierung lass ich erst einmal hier heraus. 
  * Dateioperationen sollen später über das DAO laufen
  */
 
-public class Spielfeld {
+public class Spielfeld implements Serializable {
+
+	private static final long serialVersionUID = -6610256332154440292L;
+
 	public PuzzleArray pa;
 	public MyBitSet[] rowVal = new MyBitSet[9];
 	public MyBitSet[] colVal = new MyBitSet[9];
@@ -48,7 +54,7 @@ public class Spielfeld {
 		 * genauer anschaue sind eigentlich keine Doppelungen möglich 
 		 * Diese können aber entstehen wenn ich versuche ein Feld manuell zu setzen
 		 */
-		
+
 		for (int i = 0; i < 9; i++) {
 			rowVal[i].set(0, 10, false);
 			colVal[i].set(0, 10, false);
@@ -73,13 +79,15 @@ public class Spielfeld {
 			boxVal[boxValue(row, col)].checkedSet(val);
 			result = true;
 		}
-		if(b && result) {
-			System.out.println("In Reihe[" + buchstabe.charAt(row) + "],Spalte[" + (col+1) +"] wurde eine " + val + " gesetzt.\n");
+		if (b && result) {
+			System.out.println("In Reihe[" + buchstabe.charAt(row) + "],Spalte[" + (col + 1) + "] wurde eine " + val
+					+ " gesetzt.\n");
 			einfacheAusgabe();
-		}	else if(b) {
-			System.out.println("Fehler beim Versuch in  Reihe[" + buchstabe.charAt(row) + "],Spalte[" + (col+1) +"] eine " + val + " zu setzten.\n");
+		} else if (b) {
+			System.out.println("Fehler beim Versuch in  Reihe[" + buchstabe.charAt(row) + "],Spalte[" + (col + 1)
+					+ "] eine " + val + " zu setzten.\n");
 		}
-		
+
 		return result;
 	}
 
@@ -114,5 +122,12 @@ public class Spielfeld {
 			System.out.println();
 		}
 		System.out.println(trennZeile + "\n");
+		SudokuDAO dao = new SudokuDAOImpl();
+		try {
+			dao.safe(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
