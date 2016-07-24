@@ -74,10 +74,10 @@ public class Spielfeld {
 			result = true;
 		}
 		if(b && result) {
-			System.out.println("In Reihe[" + buchstabe.charAt(row) + "],Spalte[" + (col+1) +"] wurde eine " + val + " gesetzt.\n");
+			System.out.println("In row[" + buchstabe.charAt(row) + "]col[" + (col+1) +"] wurde eine " + val + " gesetzt.\n");
 			einfacheAusgabe();
 		}	else if(b) {
-			System.out.println("Fehler beim Versuch in  Reihe[" + buchstabe.charAt(row) + "],Spalte[" + (col+1) +"] eine " + val + " zu setzten.\n");
+			System.out.println("Ungültiger Zug: row[" + buchstabe.charAt(row) + "]col[" + (col+1) +"] ist ein geschütztes Feld.\n");
 		}
 		
 		return result;
@@ -108,9 +108,9 @@ public class Spielfeld {
 			}
 			System.out.print(" |");
 			isPrinted = false;
-			System.out.print(" row[" + i + "]: " + rowVal[i]);
-			System.out.print("| col[" + i + "]: " + colVal[i]);
-			System.out.print("| box[" + i + "]: " + boxVal[i]);
+			System.out.print(" row[" + buchstabe.charAt(i) + "]: " + rowVal[i]);
+			System.out.print("| col[" + (i+1) + "]: " + colVal[i]);
+			System.out.print("| box[" + (i+1) + "]: " + boxVal[i]);
 			System.out.println();
 		}
 		System.out.println(trennZeile + "\n");

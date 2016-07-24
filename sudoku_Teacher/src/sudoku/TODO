@@ -1,4 +1,7 @@
-Ich sollte mir klar werden ob ich nicht vielleicht alles mit MyBitSet abbilde.
-	Das geht so wie ich es hier gemacht habe nicht, weil die BitSets nur die Informationen über den Inhalt einer Kategorie 
-	(also die in einer Spalte|Reihe|Box gesetzten Ziffern) aber nicht über die Position der darin liegenden Ziffern hat. 
-Es wird schnell unübersichtlich -> eindeutige Bezeichner 
+Grundsätzliche Frage:
+Was soll geschehen wenn in ein belegbares freies Feld eine Ziffer 
+eingegeben wird die mit einem der anderen Wert kollidiert?
+Alle kollidierenden Felder Rot anzuzeigen kommt mir zumindest bei einer 
+Konsolen Ausgabe erst einmal schwierig vor. Natürlich soll es später eine 
+Version mit GUI geben aber eben weiterhin eine voll funktionsfähige 
+Version für die Konsole.  
