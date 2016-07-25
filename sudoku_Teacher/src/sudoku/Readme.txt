@@ -13,3 +13,4 @@ Software nachvollziehbar helfen.
 Ein Super Vorbild ist die Android App Andoku3. Dort kann man auch viel über Sudoku
 lernen. 
  
+Nur zum Test 
